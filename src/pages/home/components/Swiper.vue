@@ -23,7 +23,6 @@
         ></div>
       </swiper>
     </div>
-    文字
   </div>
 </template>
 
