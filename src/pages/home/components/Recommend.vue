@@ -4,7 +4,8 @@
     <ul>
       <li
         v-for="item of RecommendList"
-        :key="item.id" class="item border-bottom"
+        :key="item.id"
+        class="item border-bottom"
       >
         <img
           class="item-img"
