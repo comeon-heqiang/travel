@@ -3,7 +3,7 @@
     <div class="title">热销推荐</div>
     <ul>
       <li
-        v-for="item of RecommendList"
+        v-for="item of list"
         :key="item.id"
         class="item border-bottom"
       >
@@ -41,46 +41,11 @@
 <script>
 export default {
   name: "HomeRecommend",
+  props: {
+    list: Array
+  },
   data() {
-    return {
-      RecommendList: [
-        {
-          id: "0001",
-          imgUrl:
-            "http://img1.qunarzz.com/sight/p0/1810/cc/cc47164357acbeb5a3.water.jpg_200x200_151f0405.jpg",
-          title: "杭州云曼温泉",
-          desc: "杭州云曼温泉杭州云曼温泉"
-        },
-        {
-          id: "0002",
-          imgUrl:
-            "http://img1.qunarzz.com/sight/p0/201309/25/70edd368471094bdc8d65eac.jpg_200x200_75b6f391.jpg",
-          title: "临安湍口众安氡温泉",
-          desc: "临安湍口众安氡温泉临安湍口众安氡温泉"
-        },
-        {
-          id: "0003",
-          imgUrl:
-            "http://img1.qunarzz.com/sight/p0/1812/30/308fce51111d148fa3.img.jpg_200x200_eca5da3f.jpg",
-          title: "临安大明山滑雪场",
-          desc: "临安大明山滑雪场临安大明山滑雪场"
-        },
-        {
-          id: "0004",
-          imgUrl:
-            "http://img1.qunarzz.com/sight/p0/201212/18/f195032e85740a4b93835fbb.jpg_200x200_77761d11.jpg",
-          title: "杭州海底世界",
-          desc: "杭州海底世界杭州海底世界"
-        },
-        {
-          id: "0005",
-          imgUrl:
-            "http://img1.qunarzz.com/sight/p0/1603/33/337b483a8f5e76fb90.water.jpg_200x200_8f62ff4e.jpg",
-          title: "瑶琳仙境",
-          desc: "瑶琳仙境瑶琳仙境"
-        }
-      ]
-    };
+    return {};
   }
 };
 </script>

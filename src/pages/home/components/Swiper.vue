@@ -5,10 +5,11 @@
         :options="swiperOption"
         :not-next-tick="notNextTick"
         ref="mySwiper"
+        v-if="swiperList"
       >
         <!-- slides -->
         <swiper-slide
-          v-for="item of swiperList"
+          v-for="item of list"
           :key="item.id"
         >
           <img
@@ -29,26 +30,22 @@
 <script>
 export default {
   name: "carrousel",
+  props: {
+    list: Array
+  },
   data() {
     return {
-      swiperList: [
-        {
-          id: "0001",
-          imgUrl:
-            "http://img1.qunarzz.com/piao/fusion/1609/4d/3dc09bcc290f0c02.jpg_750x200_09c97d67.jpg"
-        },
-        {
-          id: "0002",
-          imgUrl:
-            "http://img1.qunarzz.com/piao/fusion/1712/51/36632b2cb850e902.jpg_750x200_fa4120db.jpg"
-        }
-      ],
       notNextTick: true,
       swiperOption: {
         pagination: ".swiper-pagination",
         loop: true
       }
     };
+  },
+  computed: {
+    swiperList() {
+      return this.list.length;
+    }
   }
 };
 </script>
@@ -60,7 +57,7 @@ export default {
   overflow: hidden
   height: 0
   width: 100%
-  padding-bottom: 26.6%
+  padding-bottom: 31.25%
   background: #eee
   .swiper-img
     width: 100%
