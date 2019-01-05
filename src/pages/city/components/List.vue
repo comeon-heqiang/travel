@@ -41,6 +41,42 @@
           <div class="item border-bottom">
             阿拉尔
           </div>
+          <div class="item border-bottom">
+            阿拉尔
+          </div>
+          <div class="item border-bottom">
+            阿拉尔
+          </div>
+          <div class="item border-bottom">
+            阿拉尔
+          </div>
+          <div class="item border-bottom">
+            阿拉尔
+          </div>
+          <div class="item border-bottom">
+            阿拉尔
+          </div>
+          <div class="item border-bottom">
+            阿拉尔
+          </div>
+          <div class="item border-bottom">
+            阿拉尔
+          </div>
+          <div class="item border-bottom">
+            阿拉尔
+          </div>
+          <div class="item border-bottom">
+            阿拉尔
+          </div>
+          <div class="item border-bottom">
+            阿拉尔
+          </div>
+          <div class="item border-bottom">
+            阿拉尔
+          </div>
+          <div class="item border-bottom">
+            阿拉尔
+          </div>
         </div>
       </div>
     </div>
@@ -48,9 +84,18 @@
 </template>
 
 <script>
+import BScroll from 'better-scroll'
 export default {
   name: "CityList",
-  props: {}
+  props: {},
+  data() {
+    return {
+      
+    }
+  },
+  mounted(){
+   this.scroll = new BScroll(this.$refs.wrapper)
+  }
 };
 </script>
 
