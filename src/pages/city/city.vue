@@ -5,8 +5,13 @@
     <city-list
       :cities="cities"
       :hotCities="hotCities"
+      :letter="letter"
     ></city-list>
-    <city-alphabet :cities="cities"></city-alphabet>
+    <city-alphabet
+      @change="handleLetterChange"
+      :cities="cities"
+      :letter="letter"
+    ></city-alphabet>
   </div>
 </template>
 
@@ -21,7 +26,8 @@ export default {
   data() {
     return {
       cities: {},
-      hotCities: []
+      hotCities: [],
+      letter: ""
     };
   },
   components: {
@@ -39,6 +45,10 @@ export default {
           this.hotCities = res.data.hotCities;
         }
       });
+    },
+    //右侧字母表改变
+    handleLetterChange(letter) {    
+      this.letter = letter;
     }
   },
   mounted() {

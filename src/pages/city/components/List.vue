@@ -4,6 +4,7 @@
     ref="wrapper"
   >
     <div>
+      <!-- 当前城市 -->
       <div class="area">
         <div class="title border-topbottom">当前城市</div>
         <div class="button-list">
@@ -12,6 +13,7 @@
           </div>
         </div>
       </div>
+      <!-- 热门城市 -->
       <div class="area">
         <div class="title border-topbottom">热门城市</div>
         <div class="button-list">
@@ -26,10 +28,12 @@
         </div>
 
       </div>
+      <!-- 所有地区 -->
       <div
         class="area"
         v-for="(item,key) of cities"
         :key="key"
+        :ref="key"
       >
         <div class="title border-topbottom">{{key}}</div>
         <div class="item-list">
@@ -50,12 +54,22 @@
 import BScroll from "better-scroll";
 export default {
   name: "CityList",
-  props: { cities: Object, hotCities: Array },
+  props: { cities: Object, hotCities: Array, letter: String},
   data() {
     return {};
   },
+  computed: {},
   mounted() {
     this.scroll = new BScroll(this.$refs.wrapper);
+  },
+  watch: {
+    // 监听传值改变 页面滚动到指定位置
+    letter() {
+      if (this.letter) {
+        let element = this.$refs[this.letter][0];
+        this.scroll.scrollToElement(element);
+      }
+    }
   }
 };
 </script>
