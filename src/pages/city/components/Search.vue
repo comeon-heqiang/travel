@@ -17,7 +17,9 @@ export default {
   name: "CitySearch",
   props: {},
   data() {
-    return {};
+    return {
+      keyword: ""
+    };
   }
 };
 </script>
