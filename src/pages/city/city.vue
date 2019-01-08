@@ -47,7 +47,7 @@ export default {
       });
     },
     //右侧字母表改变
-    handleLetterChange(letter) {    
+    handleLetterChange(letter) {
       this.letter = letter;
     }
   },

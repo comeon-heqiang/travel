@@ -22,10 +22,13 @@
 export default {
   name: "CityAlphabet",
   props: { cities: Object },
-  computed: {},
   data() {
     return {
-      touchStatus: false
+      touchStatus: false,
+      startY: 0, //第一个字母距离顶部的高度
+      itemHeight: 0, //单个item的高度
+      HeaderHeight: 0, //获取Header的高度
+      timer: null
     };
   },
   computed: {
@@ -37,7 +40,14 @@ export default {
       return letter;
     }
   },
-  updated() {},
+  mounted() {
+    this.HeaderHeight =
+      document.documentElement.clientHeight - this.$refs.listRef.clientHeight;
+  },
+  updated() {
+    this.startY = this.$refs["A"][0].offsetTop;
+    this.itemHeight = this.$refs["A"][0].clientHeight;
+  },
   methods: {
     handleClick(e) {
       let key = e.target.innerText;
@@ -48,14 +58,20 @@ export default {
     },
     handleTouchMove(e) {
       if (this.touchStatus) {
-        //  (document.documentElement.clientHeight -
-        //     this.$refs["listRef"].clientHeight)
-        // const startY =
-        //   this.$refs["A"][0].offsetTop -
-        //  ;
-        console.log(startY);
-        // const touchY = e.touches[0].clientY -;
-        // const touchEnd=
+        if (this.timer) {
+          clearTimeout(this.timer);
+        }
+        // 函数节流
+        this.timer = setTimeout(() => {
+          const touchY = e.touches[0].clientY; //目标位置距离顶部的高度
+          const index = Math.floor(
+            (touchY - this.startY - this.HeaderHeight) / this.itemHeight
+          ); //计算目标字母的下标值
+          if (index >= 0 && index < this.letters.length) {
+            let key = this.letters[index];
+            this.$emit("change", key);
+          }
+        }, 15);
       }
     },
     handleTouchEnd(e) {
