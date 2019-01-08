@@ -1,6 +1,6 @@
 <template>
   <div>
-    <home-header :city="city"></home-header>
+    <home-header></home-header>
     <home-swiper :list="swiperData"></home-swiper>
     <home-icons :list="iconsData"></home-icons>
     <home-recommend :list="recommendData"></home-recommend>
@@ -18,8 +18,7 @@ import axios from "axios";
 export default {
   name: "Home",
   data() {
-    return {
-      city: "北京",
+    return {      
       swiperData: [],
       iconsData: [],
       recommendData: [],

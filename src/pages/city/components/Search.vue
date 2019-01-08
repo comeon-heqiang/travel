@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="search" >
+    <div class="search">
       <input
         v-model="keyword"
         class="search-input"
@@ -8,12 +8,16 @@
         placeholder="输入城市名或拼音"
       />
     </div>
-    <div class="search-content">
+    <div
+      class="search-content"
+      v-show="keyword"
+    >
       <ul>
         <li
           class="search-item border-bottom"
           v-for="item in List"
           :key="item.id"
+          @click="handleChangeCity(item.name)"
         >
           {{item.name}}
         </li>
@@ -40,6 +44,10 @@ export default {
   },
   watch: {
     keyword() {
+      if (!this.keyword) {
+        this.List = [];
+        return;
+      }
       if (this.timer) {
         clearInterval(this.timer);
       }
@@ -66,6 +74,12 @@ export default {
   computed: {
     noSearchData() {
       return !this.List.length;
+    }
+  },
+  methods: {
+    handleChangeCity(city) {
+      this.$store.commit("changeCity", city);
+      this.$router.push("/");
     }
   }
 };

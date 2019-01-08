@@ -9,7 +9,7 @@
         <div class="title border-topbottom">当前城市</div>
         <div class="button-list">
           <div class="button-wrapper">
-            <div class="button">北京</div>
+            <div class="button">{{this.$store.state.city}}</div>
           </div>
         </div>
       </div>
@@ -23,7 +23,10 @@
             v-for="item of hotCities"
             :key="item.id"
           >
-            <div class="button">{{item.name}}</div>
+            <div
+              class="button"
+              @click="handleChangeCity(item.name)"
+            >{{item.name}}</div>
           </div>
         </div>
 
@@ -41,6 +44,7 @@
             class="item border-bottom"
             v-for="itemCity of item"
             :key="itemCity.id"
+            @click="handleChangeCity(itemCity.name)"
           >
             {{itemCity.name}}
           </div>
@@ -54,7 +58,7 @@
 import BScroll from "better-scroll";
 export default {
   name: "CityList",
-  props: { cities: Object, hotCities: Array, letter: String},
+  props: { cities: Object, hotCities: Array, letter: String },
   data() {
     return {};
   },
@@ -69,6 +73,12 @@ export default {
         let element = this.$refs[this.letter][0];
         this.scroll.scrollToElement(element);
       }
+    }
+  },
+  methods: {
+    handleChangeCity(city) {
+      this.$store.commit("changeCity", city);
+      this.$router.push("/");
     }
   }
 };
