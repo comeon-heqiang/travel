@@ -70,7 +70,7 @@ export default {
   .wrapper
     height: 0
     width: 100%
-    padding-bottom: 67%
+    padding-bottom: 100%
     .gallary-img
       width: 100%
     .swiper-pagination

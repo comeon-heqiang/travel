@@ -1,7 +1,11 @@
 <template>
   <div>
     <detail-header></detail-header>
-    <detail-banner></detail-banner>
+    <detail-banner
+      :imgs="gallaryImgs"
+      :bannerImg="bannerImg"
+      :sightName="sightName"
+    ></detail-banner>
     <detail-list :list="list"></detail-list>
     <div class="contact"></div>
   </div>
@@ -16,9 +20,10 @@ export default {
   name: "Detail",
   data() {
     return {
-      bannerImg:"",
-      gallayImgs:[],
-      list: []
+      bannerImg: "",
+      gallaryImgs: [],
+      list: [],
+      sightName: ""
     };
   },
   components: {
@@ -41,8 +46,10 @@ export default {
       if (res.ret && res.data) {
         const data = res.data;
         this.list = data.categoryList;
+        this.sightName = data.sightName;
+        this.gallaryImgs = data.gallaryImgs;
+        this.bannerImg = data.bannerImg;
       }
-      console.log(res);
     }
   },
   mounted() {

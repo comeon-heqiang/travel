@@ -6,11 +6,11 @@
     >
       <img
         class="banner-img"
-        src="http://img1.qunarzz.com/sight/p0/1810/cc/cc47164357acbeb5a3.water.jpg_600x330_aed5d0a5.jpg"
+        :src="bannerImg"
       />
       <div class="banner-info">
         <div class="banner-title">
-          海洋乐园
+          {{sightName}}
         </div>
         <div class="banner-number">
           <span class="iconfont banner-icon">&#xe755;</span>
@@ -30,13 +30,9 @@
 import DetailGallary from "common/gallary/Gallary";
 export default {
   name: "DetailBanner",
+  props: ["imgs","bannerImg","sightName"],
   data() {
-    return {
-      imgs: [
-        "http://img1.qunarzz.com/sight/p0/1810/cc/cc47164357acbeb5a3.water.jpg_r_800x800_0271f7e2.jpg",
-        "http://img1.qunarzz.com/sight/p0/1810/32/32392eea822d11c8a3.water.jpg_r_800x800_4172a5f9.jpg",
-        "http://img1.qunarzz.com/sight/p0/1810/54/54a97e731330c416a3.water.jpg_r_800x800_3a69f2a8.jpg"
-      ],
+    return {    
       showGallary: false
     };
   },
