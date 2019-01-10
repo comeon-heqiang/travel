@@ -14,7 +14,7 @@
         </div>
         <div class="banner-number">
           <span class="iconfont banner-icon">&#xe755;</span>
-          25
+          {{imgs.length}}
         </div>
       </div>
     </div>
@@ -29,6 +29,7 @@
 <script>
 import DetailGallary from "common/gallary/Gallary";
 export default {
+  name: "DetailBanner",
   data() {
     return {
       imgs: [

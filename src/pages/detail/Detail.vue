@@ -3,7 +3,7 @@
     <detail-header></detail-header>
     <detail-banner></detail-banner>
     <detail-list :list="list"></detail-list>
-
+    <div class="contact"></div>
   </div>
 </template>
 
@@ -11,41 +11,42 @@
 import DetailBanner from "./components/DetailBanner";
 import DetailHeader from "./components/Header";
 import DetailList from "./components/List";
+import axios from "axios";
 export default {
+  name: "Detail",
   data() {
     return {
-      list: [
-        {
-          title: "（暖冬节）杭州云曼温泉成人票",
-          children: [
-            {
-              title: "云曼温泉亲子套票",
-              children: [
-                {
-                  title: "云曼温泉亲子套票(1大1小)"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          title: "云曼温泉畅玩年卡",
-          children: [
-            {
-              title: "云曼温泉畅玩个人年卡"
-            },
-            {
-              title: "云曼温泉畅玩情侣年卡"
-            }
-          ]
-        }
-      ]
+      bannerImg:"",
+      gallayImgs:[],
+      list: []
     };
   },
   components: {
     DetailBanner,
     DetailHeader,
     DetailList
+  },
+  methods: {
+    getDetail() {
+      axios
+        .get("/api/detail.json", {
+          params: {
+            id: "0001"
+          }
+        })
+        .then(this.response);
+    },
+    response(res) {
+      res = res.data;
+      if (res.ret && res.data) {
+        const data = res.data;
+        this.list = data.categoryList;
+      }
+      console.log(res);
+    }
+  },
+  mounted() {
+    this.getDetail();
   }
 };
 </script>
